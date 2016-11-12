@@ -1,0 +1,73 @@
+- name: pull image
+  docker_image:
+    name: "{{image_name}}"
+    tag: "{{image_tag}}"
+    timeout: 300
+    register: pull_result
+    ignore_errors: True
+
+- name: output msg if pull error
+  debug: msg="{{pull_result.msg}}"
+  when: "'Error' in pull_result.msg"
+
+- name: Inspect a single image
+  docker_image_facts:
+    name: "{{public_registry}}/{{image_name}}:{{image_tag}}"
+  register: image_info
+
+- block:
+    - name: set image info fact
+      set_fact:
+        image_id: "{{image_info.images[0].Id}}"
+        create_time: "{{image_info.images[0].Created}}"
+
+    - command: "/bin/date +%Y-%m-%d_%H:%M:%S"
+      register: DATE_CMD
+    
+    - set_fact:
+        startDate: "{{DATE_CMD.stdout}}"
+    
+    - set_fact:
+        savefile_name: info.{{image_tag}}.{{startDate}}
+    
+    - name: create dir of imagelist file
+        file: path=/tmp/imagelist/{{base_image}}/imagepull state=directory
+    
+    - name: create info file
+        template: src=../templates/image_info.j2 dest=/tmp/imagelist/{{base_image}}/imagepull/info.{{image_tag}}.{{startDate}}
+  when: "'Error' not in pull_result.msg" and "image_info.images != []"
+
+- block:
+    - name: tag image and push to other registry
+      docker_image:
+        name: "{{image_name}}"
+        repository: "{{registry_name}}/{{image_name}}"
+        tag: "{{image_tag}}"
+        push: yes
+      ignore_errors: True
+    - name: remove public image tag
+      docker_image:
+        state: absent
+        name: "{{public_registry}}/{{image_name}}" 
+        tag: "{{image_tag}}"
+      when: remove_public_image_tag == "true"
+  when: "use_network == 'true'" and "'Error' not in pull_result.msg"
+
+#now not support
+- block:
+    - name: create image tar dir
+      file: path=/tmp/imagetar/ state=directory
+
+    - name: Archive image
+      docker_image:
+        name: "{{public_registry}}/{{image_name}}"
+        tag: "{{image_tag}}"
+        archive_path: 
+       
+    - name: remove public image tag
+      docker_image:
+        state: absent
+        name: "{{public_registry}}/{{image_name}}" 
+        tag: "{{image_tag}}"
+      when: remove_public_image_tag == "true"
+  when: use_network == "false" and "'Error' not in pull_result.msg"

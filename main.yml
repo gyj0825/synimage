@@ -1,0 +1,30 @@
+- hosts: localhost
+  gather_facts: false
+  vars:
+    base_image_list: 
+      - openshift3/ose-haproxy-router
+      #- openshift3/ose-docker-builder
+      #- openshift3/ose-haproxy-router
+      #- openshift3/ose-sti-builder
+      #- openshift3/ose-deployer
+      #- openshift3/ose-docker-registry
+      #- openshift3/ose-keepalived-ipfailover
+      #- openshift3/ose-pod
+    public_registry_url: https://access.redhat.com/webassets/docker/content/dist/rhel/server/7/7Server/x86_64/ose/3/containers/registry
+    version: v3.3
+    save_imagelist: false
+    #chose which type to push image,network or tar.default network. 
+    use_network: true
+    registry_name: registry.example.com:5000
+    public_registry: registry.access.redhat.com
+    remove_public_image_tag: false
+  tasks:
+    - fail: msg="when use_network,please set registry_name"
+      when: 
+        - use_network == "true" 
+        - registry_name is undefined
+
+    - include: tasks/pull_base_image.yml
+      with_items: "{{base_image_list}}"
+      loop_control:
+        loop_var: outer_item

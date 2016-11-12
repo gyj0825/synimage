@@ -1,0 +1,14 @@
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Inspect a single image
+      docker_image:
+        name: "registry.access.redhat.com/openshift3/ose-haproxy-router"
+        repository: "regsitry.example.com:5000/openshift3/ose-haproxy-router"
+        tag: v3.3.0.35
+        timeout: 30
+      register: tag_result
+      #ignore_errors: True
+    - name: output image info
+      debug: msg="{{tag_result}}"
+      #when: "'Error' in push_result.msg"
