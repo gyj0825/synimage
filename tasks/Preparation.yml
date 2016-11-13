@@ -1,0 +1,12 @@
+- fail: msg="when use_network,please set registry_name"
+  when:
+    - use_network == "true"
+    - local_registry is undefined
+
+- fail: msg="image list is empty"
+  when:
+    - base_image_list == []
+    - openshift_image_list == []
+    - rhscl_image_list == []
+    - jboss_image_list == []
+    - other_image_list == []

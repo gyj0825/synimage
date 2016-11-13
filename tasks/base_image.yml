@@ -1,0 +1,3 @@
+- include: pull_image.yml  image_tag="{{item}}"
+  with_items: "{{image_tag_list}}"
+  when: item > "{{version}}"
