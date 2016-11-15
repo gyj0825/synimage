@@ -1,7 +1,7 @@
 #image list you want sync.
 #use '#' note beginning of image line can disable sync of image.
 #when list is null,please add [] end of imagelist name.example base_image_list: []
-base_image_list:
+base_image_list: []
   #- openshift3/ose-haproxy-router
   #- openshift3/ose-docker-builder
   #- openshift3/ose-sti-builder
