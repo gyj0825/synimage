@@ -29,6 +29,13 @@
   template: src=../templates/image_list.j2 dest={{imagefile_path}}/image_list
   when: save_imagelist == "true"
 
+- name: get time
+  command: "/bin/date +%Y-%m-%d_%H:%M:%S"
+  register: DATE_CMD
+
+- set_fact:
+    startDate: "{{DATE_CMD.stdout}}"
+
 - include: base_image.yml
   when: sign == "1"
 
