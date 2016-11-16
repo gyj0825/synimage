@@ -14,16 +14,16 @@ openshift_image_list:
   #- openshift3/mongodb-24-rhel7
   #- openshift3/mysql-55-rhel7
   #- openshift3/postgresql-92-rhel7
-  - openshift3/nodejs-010-rhel7
-  - openshift3/php-55-rhel7
-  - openshift3/ruby-20-rhel7
-  - openshift3/python-33-rhel7
-  - openshift3/perl-516-rhel7
-  - openshift3/jenkins-1-rhel7
-  - openshift3/jenkins-slave-maven-rhel7
-  - openshift3/jenkins-slave-nodejs-rhel7
-  - openshift3/jenkins-slave-base-rhel7
-  - openshift3/openvswitch
+  #- openshift3/nodejs-010-rhel7
+  #- openshift3/php-55-rhel7
+  #- openshift3/ruby-20-rhel7
+  #- openshift3/python-33-rhel7
+  #- openshift3/perl-516-rhel7
+  #- openshift3/jenkins-1-rhel7
+  #- openshift3/jenkins-slave-maven-rhel7
+  #- openshift3/jenkins-slave-nodejs-rhel7
+  #- openshift3/jenkins-slave-base-rhel7
+  #- openshift3/openvswitch
   - openshift3/node
   - openshift3/ose
   - openshift3/ose-egress-router

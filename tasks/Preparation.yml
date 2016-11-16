@@ -10,3 +10,10 @@
     - rhscl_image_list == []
     - jboss_image_list == []
     - other_image_list == []
+
+- name: get time
+  command: "/bin/date +%Y-%m-%d_%H:%M:%S"
+  register: DATE_CMD
+
+- set_fact:
+    startDate: "{{DATE_CMD.stdout}}"
