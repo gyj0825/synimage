@@ -1,0 +1,28 @@
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    delete_image_name:
+      - openshift3/logging-auth-proxy
+      - openshift3/logging-curator
+      - openshift3/logging-elasticsearch
+      - openshift3/logging-fluentd
+      - openshift3/logging-kibana
+      - openshift3/metrics-cassandra
+      - openshift3/metrics-deployer
+      - openshift3/metrics-hawkular-metrics
+      - openshift3/metrics-heapster
+      - openshift3/ose-f5-router
+      - openshift3/ose-recycler
+      
+    
+  vars_files:
+    - vars/vars_config.yml
+  tasks:
+    - include: tasks/delete_tag_list.yml
+      with_items: "{{delete_image_name}}"
+      loop_control:
+        loop_var: outer_item
+      when:
+        - delete_image_name is defined
+        - delete_image_name != []

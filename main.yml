@@ -22,7 +22,7 @@
         - openshift_image_list is defined
         - openshift_image_list != []
 
-    - include: tasks/get_tag_list.yml select_sign="0"
+    - include: tasks/get_tag_list.yml select_sign="2"
       with_items: "{{rhscl_image_list}}"
       loop_control:
         loop_var: outer_item

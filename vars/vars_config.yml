@@ -9,8 +9,28 @@ base_image_list: []
   #- openshift3/ose-docker-registry
   #- openshift3/ose-keepalived-ipfailover
   #- openshift3/ose-pod
+  #- openshift3/ose-f5-router
+  #- openshift3/ose-recycler
+  #- openshift3/ose-egress-router
+  #- openshift3/registry-console
+  #- openshift3/metrics-hawkular-metrics
+  #- openshift3/metrics-heapster
+  #- openshift3/metrics-deployer
+  #- openshift3/metrics-cassandra
+  #- openshift3/logging-auth-proxy
+  #- openshift3/logging-elasticsearch
+  #- openshift3/logging-curator
+  #- openshift3/logging-kibana
+  #- openshift3/logging-fluentd
+  #- openshift3/logging-deployer
+  #- openshift3/logging-deployment
+  #- openshift3/image-inspector
+  #- openshift3/openvswitch
+  #- openshift3/node
+  #- openshift3/ose
 
-openshift_image_list:
+# API https://access.redhat.com/webassets/docker/content/dist/rhel/server/7/7Server/x86_64/ose/3/containers/registry/openshift3/ose-haproxy-router/tags/list
+openshift_image_list: []
   #- openshift3/mongodb-24-rhel7
   #- openshift3/mysql-55-rhel7
   #- openshift3/postgresql-92-rhel7
@@ -23,35 +43,17 @@ openshift_image_list:
   #- openshift3/jenkins-slave-maven-rhel7
   #- openshift3/jenkins-slave-nodejs-rhel7
   #- openshift3/jenkins-slave-base-rhel7
-  #- openshift3/openvswitch
-  - openshift3/node
-  - openshift3/ose
-  - openshift3/ose-egress-router
-  - openshift3/ose-f5-router
-  - openshift3/ose-recycler
-  - openshift3/registry-console
-  - openshift3/metrics-hawkular-metrics
-  - openshift3/metrics-heapster
-  - openshift3/metrics-deployer
-  - openshift3/metrics-cassandra
-  - openshift3/logging-auth-proxy
-  - openshift3/logging-elasticsearch
-  - openshift3/logging-curator
-  - openshift3/logging-kibana
-  - openshift3/logging-fluentd
-  - openshift3/logging-deployer
-  - openshift3/logging-deployment
-  - openshift3/image-inspector
-  
+
+# API https://access.redhat.com/webassets/docker/content/dist/rhel/server/7/7Server/x86_64/rhscl/1/containers/registry/rhscl/mongodb-26-rhel7/tags/list  
 rhscl_image_list:
-  - rhscl/mariadb-101-rhel7
-  - rhscl/mongodb-32-rhel7
-  - rhscl/mongodb-26-rhel7
-  - rhscl/mysql-56-rhel7
-  - rhscl/nodejs-4-rhel7
-  - rhscl/php-56-rhel7
-  - rhscl/postgresql-94-rhel7
-  - rhscl/postgresql-95-rhel7
+  #- rhscl/mariadb-101-rhel7
+  #- rhscl/mongodb-32-rhel7
+  #- rhscl/mongodb-26-rhel7
+  #- rhscl/mysql-56-rhel7
+  #- rhscl/nodejs-4-rhel7
+  #- rhscl/php-56-rhel7
+  #- rhscl/postgresql-94-rhel7
+  #- rhscl/postgresql-95-rhel7
   - rhscl/python-35-rhel7
   - rhscl/python-34-rhel7
   - rhscl/python-27-rhel7
@@ -62,7 +64,8 @@ rhscl_image_list:
   - rhscl/nginx-18-rhel7
   - rhscl/nginx-16-rhel7
   - rhscl/httpd-24-rhel7
-  
+
+#API https://access.redhat.com/webassets/docker/content/dist/rhel/server/7/7Server/x86_64/ose/3/containers/registry/jboss-fuse-6/fis-java-openshift/tags/list  
 jboss_image_list:
   - jboss-fuse-6/fis-java-openshift
   - jboss-fuse-6/fis-karaf-openshift
@@ -76,18 +79,20 @@ jboss_image_list:
   - jboss-webserver-3/webserver30-tomcat8-openshift
   - jboss-datagrid-6/datagrid65-openshift
   - jboss-processserver-6/processserver63-openshift
-  
-other_image_list:
-  - rhel7/etcd
-  - rhel7/pod-infrastructure
-  - cloudforms/cfme4
-  - rhel7.2
-  - rhel7.3
-  - redhat-sso-7/sso70-openshift
-  - dotnet/dotnetcore-10-rhel7
+
+# not download  
+other_image_list: []
+  #- rhel7/etcd
+  #- rhel7/pod-infrastructure
+  #- cloudforms/cfme4
+  #- rhel7.2
+  #- rhel7.3
+  #- redhat-sso-7/sso70-openshift
+  #- dotnet/dotnetcore-10-rhel7
 
 #public regsitry API URL
 public_registry_url: https://access.redhat.com/webassets/docker/content/dist/rhel/server/7/7Server/x86_64/ose/3/containers/registry
+public_registry_url_2: https://access.redhat.com/webassets/docker/content/dist/rhel/server/7/7Server/x86_64/rhscl/1/containers/registry
 
 #image version greater than this will pull,only take effect in base_image_list. tag :latest not download.
 version: v3.3

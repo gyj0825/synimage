@@ -1,0 +1,6 @@
+- name: remove public registry image tag
+  docker_image:
+    state: absent
+    name: "{{public_registry}}/{{image_name}}"
+    tag: "{{item}}"
+  ignore_errors: True
