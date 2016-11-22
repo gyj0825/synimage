@@ -3,31 +3,35 @@
     image_name: "{{outer_item}}"
     sign: "{{select_sign}}"
 
-- name: get openshift image tag list
-  uri:
-    url: "{{public_registry_url}}/{{image_name}}/tags/list"
-    return_content: yes
-    Content-type: "application/json"
-    body_format: json
-    status_code: 200
-  register: tag_list
-  ignore_errors: True
+- block:
+   - name: get openshift image tag list
+     uri:
+       url: "{{public_registry_url}}/{{image_name}}/tags/list"
+       return_content: yes
+       Content-type: "application/json"
+       body_format: json
+       status_code: 200
+     register: tag_list_1
+     ignore_errors: True
+   - name: set fact tag content
+     set_fact:
+       tag_content: "{{tag_list_1.content}}"
   when: sign != "2"
 
-- name: get tag list
-  uri:
-    url: "{{public_registry_url_2}}/{{image_name}}/tags/list"
-    return_content: yes
-    Content-type: "application/json"
-    body_format: json
-    status_code: 200
-  register: tag_list
-  ignore_errors: True
+- block:
+   - name: get tag list
+     uri:
+       url: "{{public_registry_url_2}}/{{image_name}}/tags/list"
+       return_content: yes
+       Content-type: "application/json"
+       body_format: json
+       status_code: 200
+     register: tag_list_2
+     ignore_errors: True
+   - name: set fact tag content
+     set_fact:
+       tag_content: "{{tag_list_2.content}}"
   when: sign == "2"
-
-- name: set fact tag content
-  set_fact:
-    tag_content: "{{tag_list.content}}"
 
 - name: set fact tag list
   set_fact:
