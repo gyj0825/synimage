@@ -95,7 +95,7 @@ public_registry_url: https://access.redhat.com/webassets/docker/content/dist/rhe
 public_registry_url_2: https://access.redhat.com/webassets/docker/content/dist/rhel/server/7/7Server/x86_64/rhscl/1/containers/registry
 
 #image version greater than this will pull,only take effect in base_image_list. tag :latest not download.
-version: v3.3
+version: v3.3.1.3
 
 #whether or not save all image tag list,must "true" or "false"
 save_imagelist: "true"
