@@ -1,0 +1,27 @@
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    save_image_name:
+      - openshift3/metrics-deployer
+      - openshift3/ose-docker-registry
+      - openshift3/logging-deployer
+      - openshift3/ose-docker-builder
+      - openshift3/ose-sti-builder
+      - openshift3/ose-haproxy-router
+      - openshift3/ose-deployer
+      - openshift3/ose-keepalived-ipfailover
+      - openshift3/ose-pod
+    save_version: v3.3.1.7
+#now, don't save rhscl image
+
+  vars_files:
+    - vars/vars_config.yml
+  tasks:
+    - include: tasks/save_tag_list.yml
+      with_items: "{{save_image_name}}"
+      loop_control:
+        loop_var: outer_item
+      when:
+        - save_image_name is defined
+        - save_image_name != []

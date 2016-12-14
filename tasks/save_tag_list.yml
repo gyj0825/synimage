@@ -1,0 +1,28 @@
+- name: set fact image_name
+  set_fact:
+    image_name: "{{outer_item}}"
+
+#now, don't save rhscl image
+- name: get save image tag list
+  uri:
+    url: "{{public_registry_url}}/{{image_name}}/tags/list"
+    return_content: yes
+    Content-type: "application/json"
+    body_format: json
+    status_code: 200
+  register: tag_list
+  ignore_errors: True
+
+- name: set fact tag content
+  set_fact:
+    tag_content: "{{tag_list.content}}"
+
+- name: set fact tag list
+  set_fact:
+    image_tag_list: "{{tag_content.tags|sort}}"
+
+- include: save_image.yml
+  with_items: "{{image_tag_list}}"
+  when: 
+    - item == "{{save_version}}"
+#you can change this option

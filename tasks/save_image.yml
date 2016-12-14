@@ -1,0 +1,17 @@
+- set_fact:
+    archive_name: "{{image_name| basename}}-{{item}}.tar"
+
+- name: check image.tar exist
+  stat:
+    path: "{{archive_path}}/{{archive_name}}"
+  register: image_file_status
+
+- name: save public registry image
+  docker_image:
+    name: "{{public_registry}}/{{image_name}}"
+    tag: "{{item}}"
+    archive_path: "{{archive_path}}/{{archive_name}}"
+  ignore_errors: True
+  when: not image_file_status.stat.exists
+
+- pasue: seconds=2
