@@ -14,4 +14,4 @@
   ignore_errors: True
   when: not image_file_status.stat.exists
 
-- pasue: seconds=2
+- pause: seconds=2
