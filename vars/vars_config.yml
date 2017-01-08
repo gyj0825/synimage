@@ -107,7 +107,7 @@ archive_path: /var/www/image/image/
 use_network: "true"
 
 #local registry which you will push image to.
-local_registry: registry.example.com:5000
+local_registry: registry.origin.com:5000
 
 #public registry which you will pull image from.
 public_registry: registry.access.redhat.com
