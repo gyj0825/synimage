@@ -27,7 +27,7 @@ base_image_list:
   - openshift3/image-inspector
   #- openshift3/openvswitch
   #- openshift3/node
-  #- openshift3/ose
+  - openshift3/ose
 
 # API https://access.redhat.com/webassets/docker/content/dist/rhel/server/7/7Server/x86_64/ose/3/containers/registry/openshift3/ose-haproxy-router/tags/list
 openshift_image_list:
@@ -61,6 +61,7 @@ rhscl_image_list:
   - rhscl/ruby-22-rhel7
   - rhscl/s2i-base-rhel7
   - rhscl/perl-520-rhel7
+  - rhscl/redis-32-rhel7
   #- rhscl/nginx-18-rhel7
   #- rhscl/nginx-16-rhel7
   #- rhscl/httpd-24-rhel7
@@ -81,12 +82,12 @@ jboss_image_list:
   - jboss-processserver-6/processserver63-openshift
 
 # not download now
-other_image_list: []
+other_image_list:
   #- rhel7/etcd
-  #- rhel7/pod-infrastructure
-  #- cloudforms/cfme4
+  - rhel7/pod-infrastructure
+  - cloudforms/cfme4
   #- rhel7.2
-  #- rhel7.3
+  - rhel7.3
   #- redhat-sso-7/sso70-openshift
   #- dotnet/dotnetcore-10-rhel7
 
@@ -104,7 +105,7 @@ save_imagelist: "true"
 archive_path: /var/www/image/image/
 
 #chose which type to push image,network or tar. default network.fasle will use tar,but is not Support now.nust "true" or "false"
-use_network: "true"
+use_network: "false"
 
 #local registry which you will push image to.
 local_registry: registry.origin.com:5000
