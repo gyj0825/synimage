@@ -40,6 +40,7 @@ openshift_image_list:
   - openshift3/python-33-rhel7
   - openshift3/perl-516-rhel7
   - openshift3/jenkins-1-rhel7
+  - openshift3/jenkins-2-rhel7
   - openshift3/jenkins-slave-maven-rhel7
   - openshift3/jenkins-slave-nodejs-rhel7
   - openshift3/jenkins-slave-base-rhel7
