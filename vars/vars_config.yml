@@ -85,7 +85,7 @@ jboss_image_list:
 # not download now
 other_image_list:
   #- rhel7/etcd
-  - rhel7/pod-infrastructure
+  #- rhel7/pod-infrastructure
   - cloudforms/cfme4
   #- rhel7.2
   - rhel7.3
