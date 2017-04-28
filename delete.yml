@@ -3,19 +3,30 @@
   gather_facts: false
   vars:
     delete_image_name:
-      - openshift3/logging-auth-proxy
-      - openshift3/logging-curator
-      - openshift3/logging-elasticsearch
-      - openshift3/logging-fluentd
-      - openshift3/logging-kibana
-      - openshift3/metrics-cassandra
-      - openshift3/metrics-deployer
-      - openshift3/metrics-hawkular-metrics
-      - openshift3/metrics-heapster
+      - openshift3/ose-haproxy-router
+      - openshift3/ose-docker-builder
+      - openshift3/ose-sti-builder
+      - openshift3/ose-deployer
+      - openshift3/ose-docker-registry
+      - openshift3/ose-keepalived-ipfailover
+      - openshift3/ose-pod
       - openshift3/ose-f5-router
       - openshift3/ose-recycler
-      
-    
+      - openshift3/ose-egress-router
+      - openshift3/registry-console
+      - openshift3/metrics-hawkular-metrics
+      - openshift3/metrics-heapster
+      - openshift3/metrics-deployer
+      - openshift3/metrics-cassandra
+      - openshift3/logging-auth-proxy
+      - openshift3/logging-elasticsearch
+      - openshift3/logging-curator
+      - openshift3/logging-kibana
+      - openshift3/logging-fluentd
+      - openshift3/logging-deployer
+      - openshift3/logging-deployment
+      - openshift3/image-inspector
+ 
   vars_files:
     - vars/vars_config.yml
   tasks:

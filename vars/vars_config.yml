@@ -69,26 +69,25 @@ rhscl_image_list:
 
 #API https://access.redhat.com/webassets/docker/content/dist/rhel/server/7/7Server/x86_64/ose/3/containers/registry/jboss-fuse-6/fis-java-openshift/tags/list  
 jboss_image_list:
-  - jboss-fuse-6/fis-java-openshift
-  - jboss-fuse-6/fis-karaf-openshift
-  - jboss-amq-6/amq62-openshift
-  - jboss-decisionserver-6/decisionserver62-openshift
-  - jboss-eap-6/eap64-openshift
-  - jboss-decisionserver-6/decisionserver63-openshift
+  #- jboss-fuse-6/fis-java-openshift
+  #- jboss-fuse-6/fis-karaf-openshift
+  #- jboss-amq-6/amq62-openshift
+  #- jboss-decisionserver-6/decisionserver62-openshift
+  #- jboss-decisionserver-6/decisionserver63-openshift
   - jboss-eap-6/eap64-openshift
   - jboss-eap-7/eap70-openshift
   - jboss-webserver-3/webserver30-tomcat7-openshift
   - jboss-webserver-3/webserver30-tomcat8-openshift
-  - jboss-datagrid-6/datagrid65-openshift
-  - jboss-processserver-6/processserver63-openshift
+  #- jboss-datagrid-6/datagrid65-openshift
+  #- jboss-processserver-6/processserver63-openshift
 
 # not download now
 other_image_list:
   #- rhel7/etcd
   #- rhel7/pod-infrastructure
-  - cloudforms/cfme4
+  #- cloudforms/cfme4
   #- rhel7.2
-  - rhel7.3
+  #- rhel7.3
   #- redhat-sso-7/sso70-openshift
   #- dotnet/dotnetcore-10-rhel7
 
@@ -97,7 +96,7 @@ public_registry_url: https://access.redhat.com/webassets/docker/content/dist/rhe
 public_registry_url_2: https://access.redhat.com/webassets/docker/content/dist/rhel/server/7/7Server/x86_64/rhscl/1/containers/registry
 
 #image version greater than this will pull,only take effect in base_image_list. tag :latest not download.
-version: v3.3
+version: v3.4
 
 #whether or not save all image tag list,must "true" or "false"
 save_imagelist: "true"
@@ -109,7 +108,7 @@ archive_path: /var/www/image/image/
 use_network: "false"
 
 #local registry which you will push image to.
-local_registry: registry.origin.com:5000
+local_registry: registry.cloud.com
 
 #public registry which you will pull image from.
 public_registry: registry.access.redhat.com
