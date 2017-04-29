@@ -87,7 +87,7 @@ other_image_list:
   #- rhel7/pod-infrastructure
   #- cloudforms/cfme4
   #- rhel7.2
-  #- rhel7.3
+  - rhel7.3
   #- redhat-sso-7/sso70-openshift
   #- dotnet/dotnetcore-10-rhel7
 
